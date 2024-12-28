@@ -1,0 +1,196 @@
+{% extends 'base.html' %}
+
+{% block title %}Parkinson's Disease Prediction{% endblock %}
+
+{% block content %}
+
+{% load static %}
+
+<div class="b-example-divider mb-7"></div>
+
+<section class="text-gray-600 body-font">
+    <div class="container px-5 py-24 mx-auto">
+        <div class="text-center mb-12">
+            <h1 class="display-4 text-dark">Parkinson's Disease Prediction Form</h1>
+            <p class="lead mx-auto">Please fill in the information below to help predict Parkinsons disease risk.</p>
+        </div>
+        <div class="b-example-divider mb-7"></div>
+        <b>
+            {% if output %}
+                {% if output == "You're at Risk, Please Consult Doctor Immediately" %}
+                    <div class="alert alert-danger text-center" role="alert">
+                        {{ output }}
+                    </div>
+                {% elif output == "Good Health" %}
+                    <div class="alert alert-success text-center" role="alert">
+                        {{ output }}
+                    </div>
+                {% endif %}
+            {% endif %}
+        </b>
+        <form method="POST" action="/parkinsons/">
+            {% csrf_token %}
+            <div class="row justify-content-center">
+                <!-- Form fields for all inputs -->
+                <div class="col-lg-6 col-md-8 col-sm-12">
+                    <div class="form-group">
+                        <label for="name" class="h6 text-dark">Name and Recording Number</label>
+                        <input type="number" id="name" name="name" class="form-control" placeholder="Enter subject name and recording number">
+                    </div>
+                </div>
+                
+                <div class="col-lg-6 col-md-8 col-sm-12">
+                    <div class="form-group">
+                        <label for="MDVP_Fo" class="h6 text-dark">MDVP:Fo(Hz) - Average Fundamental Frequency</label>
+                        <input type="number" id="MDVP_Fo" name="MDVP_Fo" class="form-control" step="0.01" placeholder="Enter average vocal fundamental frequency">
+                    </div>
+                </div>
+                
+                <div class="col-lg-6 col-md-8 col-sm-12">
+                    <div class="form-group">
+                        <label for="MDVP_Fhi" class="h6 text-dark">MDVP:Fhi(Hz) - Maximum Fundamental Frequency</label>
+                        <input type="number" id="MDVP_Fhi" name="MDVP_Fhi" class="form-control" step="0.01" placeholder="Enter maximum vocal fundamental frequency">
+                    </div>
+                </div>
+                
+                <div class="col-lg-6 col-md-8 col-sm-12">
+                    <div class="form-group">
+                        <label for="MDVP_Flo" class="h6 text-dark">MDVP:Flo(Hz) - Minimum Fundamental Frequency</label>
+                        <input type="number" id="MDVP_Flo" name="MDVP_Flo" class="form-control" step="0.01" placeholder="Enter minimum vocal fundamental frequency">
+                    </div>
+                </div>
+                
+                <div class="col-lg-6 col-md-8 col-sm-12">
+                    <div class="form-group">
+                        <label for="MDVP_Jitter" class="h6 text-dark">MDVP:Jitter(%)</label>
+                        <input type="number" id="MDVP_Jitter" name="MDVP_Jitter" class="form-control" step="0.0001" placeholder="Enter jitter percentage">
+                    </div>
+                </div>
+
+                <div class="col-lg-6 col-md-8 col-sm-12">
+                    <div class="form-group">
+                        <label for="MDVP_Jitter_Abs" class="h6 text-dark">MDVP:Jitter(Abs)</label>
+                        <input type="number" id="MDVP_Jitter_Abs" name="MDVP_Jitter_Abs" class="form-control" step="0.0001" placeholder="Enter absolute jitter value">
+                    </div>
+                </div>
+
+                <div class="col-lg-6 col-md-8 col-sm-12">
+                    <div class="form-group">
+                        <label for="MDVP_RAP" class="h6 text-dark">MDVP:RAP</label>
+                        <input type="number" id="MDVP_RAP" name="MDVP_RAP" class="form-control" step="0.0001" placeholder="Enter RAP value">
+                    </div>
+                </div>
+
+                <div class="col-lg-6 col-md-8 col-sm-12">
+                    <div class="form-group">
+                        <label for="MDVP_PPQ" class="h6 text-dark">MDVP:PPQ</label>
+                        <input type="number" id="MDVP_PPQ" name="MDVP_PPQ" class="form-control" step="0.0001" placeholder="Enter PPQ value">
+                    </div>
+                </div>
+
+                <div class="col-lg-6 col-md-8 col-sm-12">
+                    <div class="form-group">
+                        <label for="Jitter_DDP" class="h6 text-dark">Jitter:DDP</label>
+                        <input type="number" id="Jitter_DDP" name="Jitter_DDP" class="form-control" step="0.0001" placeholder="Enter DDP value">
+                    </div>
+                </div>
+
+                <div class="col-lg-6 col-md-8 col-sm-12">
+                    <div class="form-group">
+                        <label for="MDVP_Shim" class="h6 text-dark">MDVP:Shimmer</label>
+                        <input type="number" id="MDVP_Shim" name="MDVP_Shim" class="form-control" step="0.0001" placeholder="Enter shimmer value">
+                    </div>
+                </div>
+
+                <div class="col-lg-6 col-md-8 col-sm-12">
+                    <div class="form-group">
+                        <label for="MDVP_Shim_dB" class="h6 text-dark">MDVP:Shimmer(dB)</label>
+                        <input type="number" id="MDVP_Shim_dB" name="MDVP_Shim_dB" class="form-control" step="0.0001" placeholder="Enter shimmer in dB">
+                    </div>
+                </div>
+
+                <div class="col-lg-6 col-md-8 col-sm-12">
+                    <div class="form-group">
+                        <label for="Shimmer_APQ3" class="h6 text-dark">Shimmer:APQ3</label>
+                        <input type="number" id="Shimmer_APQ3" name="Shimmer_APQ3" class="form-control" step="0.0001" placeholder="Enter APQ3 shimmer">
+                    </div>
+                </div>
+
+                <div class="col-lg-6 col-md-8 col-sm-12">
+                    <div class="form-group">
+                        <label for="Shimmer_APQ5" class="h6 text-dark">Shimmer:APQ5</label>
+                        <input type="number" id="Shimmer_APQ5" name="Shimmer_APQ5" class="form-control" step="0.0001" placeholder="Enter APQ5 shimmer">
+                    </div>
+                </div>
+
+                <div class="col-lg-6 col-md-8 col-sm-12">
+                    <div class="form-group">
+                        <label for="MDVP_APQ" class="h6 text-dark">MDVP:APQ</label>
+                        <input type="number" id="MDVP_APQ" name="MDVP_APQ" class="form-control" step="0.0001" placeholder="Enter APQ value">
+                    </div>
+                </div>
+
+                <div class="col-lg-6 col-md-8 col-sm-12">
+                    <div class="form-group">
+                        <label for="Shimmer_DDA" class="h6 text-dark">Shimmer:DDA</label>
+                        <input type="number" id="Shimmer_DDA" name="Shimmer_DDA" class="form-control" step="0.0001" placeholder="Enter DDA shimmer">
+                    </div>
+                </div>
+
+                <div class="col-lg-6 col-md-8 col-sm-12">
+                    <div class="form-group">
+                        <label for="NHR" class="h6 text-dark">NHR - Noise-to-Harmonics Ratio</label>
+                        <input type="number" id="NHR" name="NHR" class="form-control" step="0.0001" placeholder="Enter noise-to-harmonics ratio">
+                    </div>
+                </div>
+
+                <div class="col-lg-6 col-md-8 col-sm-12">
+                    <div class="form-group">
+                        <label for="HNR" class="h6 text-dark">HNR - Harmonics-to-Noise Ratio</label>
+                        <input type="number" id="HNR" name="HNR" class="form-control" step="0.01" placeholder="Enter harmonics-to-noise ratio">
+                    </div>
+                </div>
+
+                <div class="col-lg-6 col-md-8 col-sm-12">
+                    <div class="form-group">
+                        <label for="RPDE" class="h6 text-dark">RPDE - Recurrence Period Density Entropy</label>
+                        <input type="number" id="RPDE" name="RPDE" class="form-control" step="0.01" placeholder="Enter RPDE value">
+                    </div>
+                </div>
+
+                <div class="col-lg-6 col-md-8 col-sm-12">
+                    <div class="form-group">
+                        <label for="DFA" class="h6 text-dark">DFA - Detrended Fluctuation Analysis</label>
+                        <input type="number" id="DFA" name="DFA" class="form-control" step="0.01" placeholder="Enter DFA value">
+                    </div>
+                    <div class="form-group">
+                        <label for="spread2" class="h6 text-dark">Spread2</label>
+                        <input type="number" id="spread2" name="spread2" class="form-control" step="0.01" placeholder="Enter Spread2 value">
+                    </div>
+                    <div class="form-group">
+                        <label for="D2" class="h6 text-dark">D2 - Correlation Dimension</label>
+                        <input type="number" id="D2" name="D2" class="form-control" step="0.01" placeholder="Enter D2 value">
+                    </div>
+                </div>
+
+                <div class="col-lg-6 col-md-8 col-sm-12">
+                    <div class="form-group">
+                        <label for="spread1" class="h6 text-dark">Spread1</label>
+                        <input type="number" id="spread1" name="spread1" class="form-control" step="0.01" placeholder="Enter Spread1 value">
+                    </div>
+                    <div class="form-group">
+                        <label for="PPE" class="h6 text-dark">PPE - Pitch Period Entropy</label>
+                        <input type="number" id="PPE" name="PPE" class="form-control" step="0.01" placeholder="Enter PPE value">
+                    </div>
+
+                </div>                
+                <!-- Submit button -->
+                <div class="text-center mt-4">
+                    <button type="submit" class="btn btn-primary">Prediction</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</section>
+
+{% endblock %}

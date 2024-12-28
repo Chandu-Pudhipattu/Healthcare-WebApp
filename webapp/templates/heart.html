@@ -1,0 +1,149 @@
+{% extends 'base.html' %}
+
+{% block title %}Heart{% endblock %}
+
+{% block content %}
+
+{% load static %}
+
+  <div class="b-example-divider mb-7"></div>
+
+  <section class="text-gray-600 body-font">
+    <div class="container px-5 py-24 mx-auto">
+      <div class="text-center mb-12">
+        <h1 class="display-4 text-dark">Heart Disease Prediction Form</h1>
+        <p class="lead mx-auto">Please fill in the information below to help predict heart disease risk.</p>
+      </div>
+      <div class="b-example-divider mb-7"></div>
+        <b>
+            {% if output %}
+                {% if output == "You're at Risk, Please Consult Doctor Immediately" %}
+                    <div class="alert alert-danger text-center" role="alert">
+                        {{ output }}
+                    </div>
+                {% elif output == "Good Health" %}
+                    <div class="alert alert-success text-center" role="alert">
+                        {{ output }}
+                    </div>
+                {% endif %}
+            {% endif %}
+        </b>
+    <form method="POST", action="/heart/">
+        {% csrf_token %}  
+        <div class="row justify-content-center">
+            <div class="col-lg-6 col-md-8 col-sm-12">
+                <div class="form-group">
+                    <label for="age" class="h6 text-dark">Age</label>
+                        <input type="number" id="age" name="age" class="form-control" placeholder="Enter age">
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-8 col-sm-12">
+                <div class="form-group">
+                    <label for="sex" class="h6 text-dark">Sex</label>
+                        <select id="sex" name="sex" class="form-control">
+                            <option value="1">Male</option>
+                            <option value="0">Female</option>
+                        </select>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-8 col-sm-12">
+                <div class="form-group">
+                    <label for="cp" class="h6 text-dark">Chest Pain Type</label>
+                        <select id="cp" name="cp" class="form-control">
+                            <option value="1">Typical Angina</option>
+                            <option value="2">Atypical Angina</option>
+                            <option value="3">Non-anginal Pain</option>
+                            <option value="4">Asymptomatic</option>
+                        </select>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-8 col-sm-12">
+                <div class="form-group">
+                    <label for="trestbps" class="h6 text-dark">Resting Blood Pressure</label>
+                        <input type="number" id="trestbps" name="trestbps" class="form-control" placeholder="Enter resting blood pressure">
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-8 col-sm-12">
+                <div class="form-group">
+                    <label for="chol" class="h6 text-dark">Serum Cholesterol (mg/dl)</label>
+                        <input type="number" id="chol" name="chol" class="form-control" placeholder="Enter serum cholesterol level">
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-8 col-sm-12">
+                <div class="form-group">
+                    <label for="fbs" class="h6 text-dark">Fasting Blood Sugar > 120 mg/dl</label>
+                        <select id="fbs" name="fbs" class="form-control">
+                            <option value="1">True</option>
+                            <option value="0">False</option>
+                        </select>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-8 col-sm-12">
+                <div class="form-group">
+                    <label for="restecg" class="h6 text-dark">Resting Electrocardiographic Results</label>
+                        <select id="restecg" name="restecg" class="form-control">
+                            <option value="0">Normal</option>
+                            <option value="1">ST-T Wave Abnormality</option>
+                            <option value="2">Left Ventricular Hypertrophy</option>
+                        </select>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-8 col-sm-12">
+                <div class="form-group">
+                    <label for="thalach" class="h6 text-dark">Maximum Heart Rate Achieved</label>
+                        <input type="number" id="thalach" name="thalach" class="form-control" placeholder="Enter maximum heart rate">
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-8 col-sm-12">
+                <div class="form-group">
+                    <label for="exang" class="h6 text-dark">Exercise Induced Angina</label>
+                        <select id="exang" name="exang" class="form-control">
+                            <option value="1">Yes</option>
+                            <option value="0">No</option>
+                        </select>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-8 col-sm-12">
+                <div class="form-group">
+                    <label for="oldpeak" class="h6 text-dark">Oldpeak (ST Depression)</label>
+                        <input type="number" id="oldpeak" name="oldpeak" class="form-control" step="0.1" placeholder="Enter ST depression level">
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-8 col-sm-12">
+                <div class="form-group">
+                    <label for="slope" class="h6 text-dark">Slope of the Peak Exercise ST Segment</label>
+                        <select id="slope" name="slope" class="form-control">
+                            <option value="1">Upsloping</option>
+                            <option value="2">Flat</option>
+                            <option value="3">Downsloping</option>
+                        </select>
+                </div>
+                <div class="form-group">
+                    <label for="thal" class="h6 text-dark">Thalassemia</label>
+                        <select id="thal" name="thal" class="form-control">
+                            <option value="3">Normal</option>
+                            <option value="6">Fixed Defect</option>
+                            <option value="7">Reversible Defect</option>
+                        </select>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-8 col-sm-12">
+                <div class="form-group">
+                    <label for="ca" class="h6 text-dark">Number of Major Vessels Colored by Fluoroscopy</label>
+                        <select id="ca" name="ca" class="form-control">
+                            <option value="0">0</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                        </select>
+                </div>
+            </div>
+            <div class="col-12 text-center py-3">
+                <button class="btn btn-primary btn-lg">Predict</button>
+            </div>
+        </div>
+    </div>
+</form>
+  </section>
+
+{% endblock %}

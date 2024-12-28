@@ -1,0 +1,92 @@
+{% extends 'base.html' %}
+
+{% block title %}Insurance Premium Prediction{% endblock %}
+
+{% block content %}
+
+{% load static %}
+
+<div class="b-example-divider mb-7"></div>
+
+<section class="text-gray-600 body-font" style="display: flex; flex-direction: column; min-height: 70vh;">
+    <div class="container px-5 py-24 mx-auto">
+        <div class="text-center mb-12">
+            <h1 class="display-4 text-dark">Premium Isurance Prediction Form</h1>
+            <p class="lead mx-auto">Please provide the required inputs for an accurate prediction.</p>
+        </div>
+        <div class="b-example-divider mb-7"></div>
+        <b>
+            {% if output %}
+                <div class="alert alert-success text-center" role="alert">
+                    Predicted Insurance Premium: {{ output.output }}$
+                </div>
+            {% endif %}
+        </b>
+        <form method="POST" action="/insurance/">
+            {% csrf_token %}
+            <div class="row justify-content-center">
+                <!-- Form fields for all inputs -->
+                <div class="col-lg-6 col-md-8 col-sm-12">
+                    <div class="form-group">
+                        <label for="age" class="h6 text-dark">Age</label>
+                        <input type="number" id="age" name="age" class="form-control" placeholder="Enter Your Age">
+                    </div>
+                </div>
+                
+                <div class="col-lg-6 col-md-8 col-sm-12">
+                    <div class="form-group">
+                        <label for="sex" class="h6 text-dark">Enter the Sex</label>
+                        <select id="sex" name="sex" type="text" class="form-control">
+                            <option selected>Open this select menu</option>
+                            <option value="1">Male</option>
+                            <option value="0">Female</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="col-lg-6 col-md-8 col-sm-12">
+                    <div class="form-group">
+                        <label for="bmi" class="h6 text-dark">Enter the BMI</label>
+                        <input type="text" id="bmi" name="bmi" class="form-control">
+                    </div>
+                </div>
+                
+                <div class="col-lg-6 col-md-8 col-sm-12">
+                    <div class="form-group">
+                        <label for="children" class="h6 text-dark">Enter Number of Children</label>
+                        <input type="text" id="children" name="children" class="form-control">
+                    </div>
+                </div>
+                
+                <div class="col-lg-6 col-md-8 col-sm-12">
+                    <div class="form-group">
+                        <label for="smoker" class="h6 text-dark">Are you Smoker?</label>
+                        <select id="smoker" name="smoker" type="text" class="form-control">
+                            <option selected>Open this select menu</option>
+                            <option value="1">Yes</option>
+                            <option value="0">No</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="col-lg-6 col-md-8 col-sm-12">
+                    <div class="form-group">
+                        <label for="region" class="h6 text-dark">Enter your Region</label>
+                        <select id="region" name="region" type="text" class="form-control">
+                            <option selected>Open this select menu</option>
+                            <option value="1">southwest</option>
+                            <option value="2">southeast</option>
+                            <option value="3">northwest</option>
+                            <option value="4">northeast</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-12 text-center py-3" style="padding-top:10px;">
+                    <button class="btn btn-primary btn-lg" type='submit'>Predict</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</section>
+
+{% endblock %}

@@ -1,0 +1,121 @@
+{% extends 'base.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+    {% load static %}
+
+    <div class="bg-dark text-secondary px-4 py-5 text-start border-transparent shadow-effect" 
+     style="position: relative; overflow: hidden; min-height: 60vh;">
+    <!-- Image inside the div -->
+    <img src="{% static 'background.webp' %}" alt="Heart Cover" 
+         style="object-fit: cover; width: 100%; height: 100%; position: absolute; top: 0; left: 0;">
+
+    <div class="text-secondary px-3" style="position: relative; z-index: 1;">
+        <!-- Your content here -->
+        <h1 class="display-5 fw-bold text-primary text-left">Healthcare Intelligence Powered by AI</h1>
+        <div class="col-lg-6 text-start">
+          <p class="row fs-5 px-5 py-4 text-center text-white">Experience smarter healthcare with AI-driven predictions. From assessing heart and Parkinson's risks to estimating insurance costs, our platform delivers accurate, personalized insights to support better decisions and healthier lives.</p>
+      </div>
+    </div>
+</div>
+
+  <div class="b-example-divider mb-0"></div>
+
+    
+
+<div id="crx-root-main"></div>
+  <!-- Marketing messaging and featurettes
+  ================================================== -->
+  <!-- Wrap the rest of the page in another container to center all the content. -->
+
+  <div class="container marketing" style="padding-top:25px;padding-left:60px;">
+
+    <!-- Three columns of text below the carousel -->
+    <div class="container">
+        <div class="row g-4 text-center"> <!-- Added 'text-center' for centering text -->
+          <div class="col-lg-4 d-flex flex-column align-items-center">
+            <div class="rounded-circle" style="width: 140px; height: 140px; overflow: hidden;">
+                <img src="{% static 'accurate.jpeg' %}" alt="Accurate Insights" class="w-100 h-100 object-fit-cover">
+            </div>
+            <h2 class="fw-normal mt-3">Accurate Insights</h2>
+            <p>Get detailed and precise data analysis to understand complex healthcare scenarios. Make informed decisions based on reliable, real-time insights.</p>
+        </div><!-- /.col-lg-4 -->
+      
+        <div class="col-lg-4 d-flex flex-column align-items-center">
+          <div class="rounded-circle" style="width: 140px; height: 140px; overflow: hidden;">
+              <img src="{% static 'decision.webp' %}" alt="Accurate Insights" class="w-100 h-100 object-fit-cover">
+          </div>
+            <h2 class="fw-normal mt-3">Quick Decision</h2>
+            <p>Take swift action based on timely and relevant healthcare data. Minimize delays with streamlined decision-making with our predictions.</p>
+          </div><!-- /.col-lg-4 -->
+      
+          <div class="col-lg-4 d-flex flex-column align-items-center">
+            <div class="rounded-circle" style="width: 140px; height: 140px; overflow: hidden;">
+                <img src="{% static 'action.jpg' %}" alt="Accurate Insights" class="w-100 h-100 object-fit-cover">
+            </div>
+            <h2 class="fw-normal mt-3"> Informed Actions</h2>
+            <p>Make smarter healthcare choices with the help of data-driven insights. Empower your actions by having the right information at the right time.</p>
+          </div><!-- /.col-lg-4 -->
+        </div><!-- /.row -->
+      </div><!-- /.container -->
+      
+
+
+    <!-- START THE FEATURETTES -->
+
+    <hr class="featurette-divider">
+
+    <div class="row featurette">
+      <div class="col-md-7">
+        <h2 class="featurette-heading fw-normal lh-1">Be Proactive, Not Reactive: Empower Your Heart, Empower Your Life </h2>
+        <p class="lead px-4" style="text-align: justify; line-height: 1.8; font-family: 'Calibri', sans-serif; margin-top: 50px;">
+          As we age, maintaining heart health becomes crucial, but staying active and adopting a balanced lifestyle can mitigate risks. Elevated cholesterol or blood sugar levels and exercise-induced chest pain are signals to take action, emphasizing the importance of a healthy diet, regular exercise, and timely care. By prioritizing these habits, you can protect your heart, enhance well-being, and lead a healthier life.
+      </p>
+      </div>
+      <div class="col-md-5 d-flex align-items-center justify-content-center">
+        <img src="{% static 'heartcover.avif' %}" class="featurette-image img-fluid mx-auto" style="height: 400px; width: auto; border-radius: 25px;" alt="Heart Disease Image">
+    </div>
+    </div>
+
+    <hr class="featurette-divider">
+
+    <div class="row featurette">
+      <div class="col-md-7 order-md-2">
+        <h2 class="featurette-heading fw-normal lh-1">Embrace Strength, Seek Support: Early Action Can Make a Difference in Parkinson’s.</h2>
+        <p class="lead px-4" style="text-align: justify; line-height: 1.8; font-family: 'Calibri', sans-serif;">
+          Involuntary shaking, especially when resting, may signal Parkinson's, but early detection can make managing symptoms more effective. Slower movements or difficulty initiating movement are signs to stay positive and take proactive steps. Muscle or joint stiffness could also indicate Parkinson's, and addressing it early enhances quality of life. A reduced range of facial expressions, like a “masked” face, might be a sign to seek help and embrace care. Similarly, a softer or more monotone voice could be related to Parkinson's, but timely intervention can preserve confidence and communication.
+      </p>
+      </div>
+      <div class="col-md-5 d-flex align-items-center justify-content-center">
+        <img src="{% static 'parkinsons.webp' %}" class="featurette-image img-fluid mx-auto" style="height: 400px; width: auto; border-radius: 25px;" alt="Heart Disease Image">
+    </div>
+    </div>
+
+    <hr class="featurette-divider">
+
+    <div class="row featurette">
+      <div class="col-md-7 text-center">
+        <h2 class="featurette-heading fw-normal lh-1">Protecting What Matters: The Power of Insurance in Safeguarding Your Future</h2>
+        <p class="lead px-4" style="text-align: justify; line-height: 1.8; font-family: 'Calibri', sans-serif; margin-top: 50px;">
+          Insurance is essential for providing financial security and peace of mind by protecting against unexpected events like accidents, health issues, and property damage. It helps manage risks and covers medical expenses, ensuring access to treatments without financial strain. Additionally, insurance supports long-term financial planning, such as life insurance and retirement plans, ensuring a secure future for individuals and their dependents. Overall, insurance offers a safety net that helps mitigate the impact of life's uncertainties, promoting stability and well-being.
+      </p>
+      </div>
+      <div class="col-md-5 d-flex align-items-center justify-content-center">
+        <img src="{% static 'insurance.jpg' %}" class="featurette-image img-fluid mx-auto" style="height: 400px; width: auto; border-radius: 25px;" alt="Heart Disease Image">
+    </div>
+    </div>
+
+    <hr class="featurette-divider">
+
+    <!-- /END THE FEATURETTES -->
+
+  </div><!-- /.container -->
+
+<script src="/docs/5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
+    
+
+<div id="crx-root-main"></div>
+
+{% endblock %}

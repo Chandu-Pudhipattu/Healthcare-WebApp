@@ -1,0 +1,81 @@
+/* Style for the header */
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+}
+header {
+    background-color: black; /* Grey background */
+    padding:1rem; /* Add some padding around the header */
+    width: 100%;
+    position: fixed;
+    height: 35px;
+}
+
+/* Style for the navigation menu */
+.navlist {
+    display: flex; /* Flexbox layout */
+    justify-content: center; /* Align items to the left */
+    align-items: center; /* Align items vertically */
+}
+
+/* Style for the unordered list */
+.icons {
+    list-style: none; /* Remove default bullet points */
+    display: flex; /* Align list items in a row */
+    gap: 2rem; /* Add 2rem gap between items */
+    margin: 0; /* Remove default margin */
+    padding: 0; /* Remove default padding */
+}
+
+/* Style for the links */
+.icons a {
+    text-decoration: none; /* Remove underline from links */
+    color: white; /* White text color */
+    font-size: 1.5rem; /* Set a base font size */
+    transition: color 0.3s;
+    font-family: 'Arial', sans-serif;
+}
+.icons a:hover {
+    color: blue; /* Light gray on hover */
+}
+
+/* Active link styling */
+.icons a:focus, .icons a.active {
+    color: blue; /* Light gray for the active link */
+}
+/* Section styling */
+.section1 {
+    width: 100%;
+    height: 325px; /* Full viewport height */
+    background-image: url("{% static 'coverphoto.jpg' %}"); /* Replace with the correct path to your image */
+    background-size: cover; /* Make the image cover the entire section */
+    background-position: center; /* Center the image */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white; /* Text color */
+    text-align: center;
+    box-sizing: border-box;
+}
+
+/* Inner section for content */
+.inner_section1 {
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background to enhance readability */
+    border-radius: 10px;
+    max-width: 100%; /* Limit width */
+    width: 100%;
+}
+
+/* Title styling */
+.title {
+    font-size: 3rem;
+    margin-bottom: 20px;
+}
+
+/* Description text styling */
+.desc {
+    font-size: 1.5rem;
+    line-height: 1.6;
+}
+
